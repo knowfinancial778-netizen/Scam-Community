@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScamGuard Pro | Multi-Lingual Security Hub</title>
+    <link rel="stylesheet" href="src/web/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/624c803875.js" crossorigin="anonymous"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>#mobile-toggle { display: none; }</style>
+</head>
+<body class="dashboard-layout">
+    <div class="glass-background"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo"><i class="fas fa-shield-halved"></i> Scam<span>Guard</span></div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section">MAIN</div>
+            <ul>
+                <li class="active" data-tab="dashboard"><i class="fas fa-th-large"></i> <span data-i18n="nav_dashboard">Dashboard</span></li>
+                <li data-tab="report"><i class="fas fa-plus-circle"></i> <span data-i18n="nav_report">Submit Report</span></li>
+                <li data-tab="live-feed"><i class="fas fa-rss"></i> <span data-i18n="nav_feed">Live Threat Feed</span></li>
+            </ul>
+
+            <div class="nav-section">GLOBAL TRUSTED PARTNERS</div>
+            <div class="mini-icon-grid">
+                <!-- 40+ Symbols/Logos representing global monitoring -->
+                <i class="fab fa-google" title="Google"></i> <i class="fab fa-apple" title="Apple"></i> <i class="fab fa-amazon" title="Amazon"></i> <i class="fab fa-facebook" title="Facebook"></i>
+                <i class="fab fa-twitter" title="Twitter"></i> <i class="fab fa-instagram" title="Instagram"></i> <i class="fab fa-linkedin" title="LinkedIn"></i> <i class="fab fa-github" title="GitHub"></i>
+                <i class="fab fa-microsoft" title="Microsoft"></i> <i class="fab fa-paypal" title="PayPal"></i> <i class="fab fa-stripe" title="Stripe"></i> <i class="fab fa-spotify" title="Spotify"></i>
+                <i class="fab fa-slack" title="Slack"></i> <i class="fab fa-discord" title="Discord"></i> <i class="fab fa-whatsapp" title="WhatsApp"></i> <i class="fab fa-telegram" title="Telegram"></i>
+                <i class="fab fa-reddit" title="Reddit"></i> <i class="fab fa-twitch" title="Twitch"></i> <i class="fab fa-youtube" title="YouTube"></i> <i class="fab fa-vimeo" title="Vimeo"></i>
+                <i class="fab fa-dribbble" title="Dribbble"></i> <i class="fab fa-behance" title="Behance"></i> <i class="fab fa-medium" title="Medium"></i> <i class="fab fa-pinterest" title="Pinterest"></i>
+                <i class="fab fa-snapchat" title="Snapchat"></i> <i class="fab fa-tiktok" title="TikTok"></i> <i class="fab fa-bitcoin" title="Bitcoin"></i> <i class="fab fa-ethereum" title="Ethereum"></i>
+                <i class="fab fa-chrome" title="Chrome"></i> <i class="fab fa-firefox" title="Firefox"></i> <i class="fab fa-safari" title="Safari"></i> <i class="fab fa-edge" title="Edge"></i>
+                <i class="fab fa-android" title="Android"></i> <i class="fab fa-linux" title="Linux"></i> <i class="fab fa-docker" title="Docker"></i> <i class="fab fa-npm" title="NPM"></i>
+                <i class="fab fa-python" title="Python"></i> <i class="fab fa-java" title="Java"></i> <i class="fab fa-node-js" title="Node.js"></i> <i class="fab fa-html5" title="HTML5"></i>
+                <i class="fab fa-css3-alt" title="CSS3"></i> <i class="fab fa-js-square" title="JavaScript"></i> <i class="fab fa-react" title="React"></i> <i class="fab fa-vuejs" title="Vue.js"></i>
+                <i class="fab fa-angular" title="Angular"></i> <i class="fab fa-node" title="Node"></i> <i class="fab fa-php" title="PHP"></i> <i class="fab fa-swift" title="Swift"></i>
+                <i class="fab fa-uikit" title="UIkit"></i> <i class="fab fa-bootstrap" title="Bootstrap"></i> <i class="fab fa-wordpress" title="WordPress"></i> <i class="fab fa-magento" title="Magento"></i>
+            </div>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-pill">
+                <div class="avatar"><i class="fas fa-user"></i></div>
+                <div class="user-info">
+                    <span class="user-name">Guest User</span>
+                    <span class="user-status">Sign in to report</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <header class="top-bar">
+            <div class="mobile-nav-header">
+                <button id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            </div>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="global-search" data-i18n="search_placeholder" placeholder="Search for scam signatures...">
+            </div>
+            <div class="top-actions">
+                <div class="language-picker">
+                    <select id="lang-select">
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                    </select>
+                </div>
+                <div class="notif-bell"><i class="fas fa-bell"></i></div>
+                <div id="g_id_onload"
+                     data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse">
+                </div>
+                <div class="g_id_signin" data-type="standard"></div>
+            </div>
+        </header>
+
+        <div class="content-scroll">
+            
+            <!-- Dashboard Tab -->
+            <section id="dashboard" class="tab-content active">
+                <div class="welcome-header">
+                    <h1>System Overview</h1>
+                    <p>Real-time analytics powered by multi-language cluster.</p>
+                </div>
+
+                <div class="stats-grid-v2">
+                    <div class="stat-card glass-card">
+                        <div class="icon-wrap color-blue"><i class="fas fa-shield-check"></i></div>
+                        <div class="stat-data">
+                            <span class="label">Total Reports</span>
+                            <span class="value" id="stat-total">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="icon-wrap color-purple"><i class="fas fa-user-ninja"></i></div>
+                        <div class="stat-data">
+                            <span class="label">Blocked Threats</span>
+                            <span class="value" id="stat-threats">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="icon-wrap color-green"><i class="fas fa-handshake"></i></div>
+                        <div class="stat-data">
+                            <span class="label">Verified Partners</span>
+                            <span class="value">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="icon-wrap color-orange"><i class="fas fa-fire"></i></div>
+                        <div class="stat-data">
+                            <span class="label">Active Scams</span>
+                            <span class="value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-grid">
+                    <div class="chart-container glass-card">
+                        <h3>Scam Activity Trends</h3>
+                        <div style="height: 300px;"><canvas id="scamChart"></canvas></div>
+                    </div>
+                    <div class="community-highlight glass-card">
+                        <h3>Community Contributions</h3>
+                        <p>Join thousands of users sharing malicious signatures globally.</p>
+                        <button class="btn btn-primary" onclick="switchTab('live-feed')">Browse Public Reports</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Report Tab -->
+            <section id="report" class="tab-content">
+                <div class="form-container">
+                    <div class="glass-card">
+                        <h2 data-i18n="report_title">Advanced Report Submission</h2>
+                        <div class="auth-notice">
+                            <i class="fas fa-info-circle"></i> Google Authentication required for public publishing.
+                        </div>
+                        <form id="scam-form-v3" style="margin-top:20px">
+                            <div class="input-group">
+                                <label>Scam Category</label>
+                                <select><option>Phishing</option><option>Vishing</option><option>Financial Fraud</option></select>
+                            </div>
+                            <div class="input-group">
+                                <label>Report Details</label>
+                                <textarea rows="4" placeholder="Describe the fraud..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Report to Public Database</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Live Feed Tab -->
+            <section id="live-feed" class="tab-content">
+                <h2 data-i18n="public_feed_title">Live Community Reports</h2>
+                <div class="reports-stream" id="reports-stream" style="margin-top:20px">
+                    <!-- Dynamic Stream -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="src/web/js/app.js"></script>
+</body>
+</html>

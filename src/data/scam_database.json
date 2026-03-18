@@ -1,0 +1,17 @@
+{
+    "scams": [],
+    "statistics": {
+        "total_reports": 0,
+        "active_users": 0,
+        "data_processed": "0.0 TB",
+        "threats_blocked": 0
+    },
+    "features_list": [
+        "Google OAuth 2.0", "Biometric Authentication", "Email Encryption", "Session Timeouts", 
+        "Machine Learning Analysis", "Natural Language Processing", "Image Metadata Extraction", "Link Sandboxing",
+        "Real-time Dashboard", "Geo-locational Mapping", "Trend Analysis Charts", "PDF Report Generation",
+        "Community Voting", "User Reputation System", "Badges & Achievements", "Comment Moderation",
+        "Password Generator", "QR Code Scanner", "Deepfake Video Analysis", "Email Header Insights",
+        "Dark Mode", "Multi-language Support", "Accessibility Mode", "Custom Notifications"
+    ]
+}
