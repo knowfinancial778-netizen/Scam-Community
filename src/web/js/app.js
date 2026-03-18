@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const sidebarLinks = document.querySelectorAll('.sidebar-nav li');
     const langSelect = document.getElementById('lang-select');
     let mainChart = null;
+    const API_URL = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' 
+                    ? 'http://127.0.0.1:5000' 
+                    : 'https://scam-guard-api.onrender.com'; // Change this after deploying to Render
 
     // Multi-Language Logic
     function updateLanguage(lang) {
@@ -78,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function initSystem() {
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/data');
+            const response = await fetch(`${API_URL}/api/data`);
             const data = await response.json();
             dbData = data;
         } catch (error) {
@@ -179,7 +182,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             };
 
             // Post to API
-            fetch('http://127.0.0.1:5000/api/report', {
+            fetch(`${API_URL}/api/report`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

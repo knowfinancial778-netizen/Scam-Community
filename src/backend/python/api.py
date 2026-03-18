@@ -134,5 +134,6 @@ def add_report():
 
 if __name__ == '__main__':
     init_db()
-    print(f"[*] Database initialized at {DB_PATH}")
-    app.run(port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    print(f"[*] Database initialized and listening on port {port}")
+    app.run(host='0.0.0.0', port=port)
