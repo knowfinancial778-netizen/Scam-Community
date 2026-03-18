@@ -15,6 +15,7 @@
 </head>
 <body class="dashboard-layout">
     <div class="glass-background"></div>
+    <div class="noise"></div>
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
@@ -34,21 +35,18 @@
             </ul>
 
             <div class="nav-section">GLOBAL TRUSTED PARTNERS</div>
-            <div class="mini-icon-grid">
-                <!-- 40+ Symbols/Logos representing global monitoring -->
-                <i class="fab fa-google" title="Google"></i> <i class="fab fa-apple" title="Apple"></i> <i class="fab fa-amazon" title="Amazon"></i> <i class="fab fa-facebook" title="Facebook"></i>
-                <i class="fab fa-twitter" title="Twitter"></i> <i class="fab fa-instagram" title="Instagram"></i> <i class="fab fa-linkedin" title="LinkedIn"></i> <i class="fab fa-github" title="GitHub"></i>
-                <i class="fab fa-microsoft" title="Microsoft"></i> <i class="fab fa-paypal" title="PayPal"></i> <i class="fab fa-stripe" title="Stripe"></i> <i class="fab fa-spotify" title="Spotify"></i>
-                <i class="fab fa-slack" title="Slack"></i> <i class="fab fa-discord" title="Discord"></i> <i class="fab fa-whatsapp" title="WhatsApp"></i> <i class="fab fa-telegram" title="Telegram"></i>
-                <i class="fab fa-reddit" title="Reddit"></i> <i class="fab fa-twitch" title="Twitch"></i> <i class="fab fa-youtube" title="YouTube"></i> <i class="fab fa-vimeo" title="Vimeo"></i>
-                <i class="fab fa-dribbble" title="Dribbble"></i> <i class="fab fa-behance" title="Behance"></i> <i class="fab fa-medium" title="Medium"></i> <i class="fab fa-pinterest" title="Pinterest"></i>
-                <i class="fab fa-snapchat" title="Snapchat"></i> <i class="fab fa-tiktok" title="TikTok"></i> <i class="fab fa-bitcoin" title="Bitcoin"></i> <i class="fab fa-ethereum" title="Ethereum"></i>
-                <i class="fab fa-chrome" title="Chrome"></i> <i class="fab fa-firefox" title="Firefox"></i> <i class="fab fa-safari" title="Safari"></i> <i class="fab fa-edge" title="Edge"></i>
-                <i class="fab fa-android" title="Android"></i> <i class="fab fa-linux" title="Linux"></i> <i class="fab fa-docker" title="Docker"></i> <i class="fab fa-npm" title="NPM"></i>
-                <i class="fab fa-python" title="Python"></i> <i class="fab fa-java" title="Java"></i> <i class="fab fa-node-js" title="Node.js"></i> <i class="fab fa-html5" title="HTML5"></i>
-                <i class="fab fa-css3-alt" title="CSS3"></i> <i class="fab fa-js-square" title="JavaScript"></i> <i class="fab fa-react" title="React"></i> <i class="fab fa-vuejs" title="Vue.js"></i>
-                <i class="fab fa-angular" title="Angular"></i> <i class="fab fa-node" title="Node"></i> <i class="fab fa-php" title="PHP"></i> <i class="fab fa-swift" title="Swift"></i>
-                <i class="fab fa-uikit" title="UIkit"></i> <i class="fab fa-bootstrap" title="Bootstrap"></i> <i class="fab fa-wordpress" title="WordPress"></i> <i class="fab fa-magento" title="Magento"></i>
+            <div class="ticker-container">
+                <div class="ticker-track">
+                    <!-- Twin logos for infinite effect -->
+                    <i class="fab fa-google" title="Google"></i> <i class="fab fa-apple" title="Apple"></i> <i class="fab fa-amazon" title="Amazon"></i> <i class="fab fa-facebook" title="Facebook"></i>
+                    <i class="fab fa-twitter" title="Twitter"></i> <i class="fab fa-instagram" title="Instagram"></i> <i class="fab fa-linkedin" title="LinkedIn"></i> <i class="fab fa-github" title="GitHub"></i>
+                    <i class="fab fa-microsoft" title="Microsoft"></i> <i class="fab fa-paypal" title="PayPal"></i> <i class="fab fa-stripe" title="Stripe"></i> <i class="fab fa-spotify" title="Spotify"></i>
+                    <i class="fab fa-slack" title="Slack"></i> <i class="fab fa-discord" title="Discord"></i> <i class="fab fa-whatsapp" title="WhatsApp"></i> <i class="fab fa-telegram" title="Telegram"></i>
+                    <i class="fab fa-reddit" title="Reddit"></i> <i class="fab fa-twitch" title="Twitch"></i> <i class="fab fa-youtube" title="YouTube"></i> <i class="fab fa-vimeo" title="Vimeo"></i>
+                    <!-- Repeat for smooth loop -->
+                    <i class="fab fa-google" title="Google"></i> <i class="fab fa-apple" title="Apple"></i> <i class="fab fa-amazon" title="Amazon"></i> <i class="fab fa-facebook" title="Facebook"></i>
+                    <i class="fab fa-twitter" title="Twitter"></i> <i class="fab fa-instagram" title="Instagram"></i> <i class="fab fa-linkedin" title="LinkedIn"></i> <i class="fab fa-github" title="GitHub"></i>
+                </div>
             </div>
         </nav>
         <div class="sidebar-footer">
@@ -93,51 +91,57 @@
             
             <!-- Home Tab -->
             <section id="home" class="tab-content active">
-                <div class="welcome-header">
-                    <h1>ScamGuard Home</h1>
-                    <p>Your portal for real-time protection and community insights.</p>
+                <div class="hero-section glass-card">
+                    <div class="hero-content">
+                        <span class="badge neon-glow"><i class="fas fa-bolt"></i> System Live</span>
+                        <h1>Neural Threat Perception</h1>
+                        <p>Our cross-language engine cluster (Java, Python, C++) is currently processing global scam signatures in real-time.</p>
+                        <div class="hero-stats">
+                            <div class="h-stat"><strong>99.9%</strong><span>Uptime</span></div>
+                            <div class="h-stat"><strong>24/7</strong><span>Monitoring</span></div>
+                            <div class="h-stat"><strong>Global</strong><span>Database</span></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="stats-grid-v2">
                     <div class="stat-card glass-card">
                         <div class="icon-wrap color-blue"><i class="fas fa-shield-check"></i></div>
                         <div class="stat-data">
-                            <span class="label">Total Reports</span>
+                            <span class="label">Total Intelligence</span>
                             <span class="value" id="stat-total">0</span>
                         </div>
                     </div>
                     <div class="stat-card glass-card">
                         <div class="icon-wrap color-purple"><i class="fas fa-user-ninja"></i></div>
                         <div class="stat-data">
-                            <span class="label">Blocked Threats</span>
+                            <span class="label">Attacks Deflected</span>
                             <span class="value" id="stat-threats">0</span>
                         </div>
                     </div>
                     <div class="stat-card glass-card">
-                        <div class="icon-wrap color-green"><i class="fas fa-handshake"></i></div>
+                        <div class="icon-wrap color-green"><i class="fas fa-server"></i></div>
                         <div class="stat-data">
-                            <span class="label">Verified Partners</span>
-                            <span class="value">0</span>
-                        </div>
-                    </div>
-                    <div class="stat-card glass-card">
-                        <div class="icon-wrap color-orange"><i class="fas fa-fire"></i></div>
-                        <div class="stat-data">
-                            <span class="label">Active Scams</span>
-                            <span class="value">0</span>
+                            <span class="label">Node Status</span>
+                            <span class="value">Active</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="main-grid">
                     <div class="chart-container glass-card">
-                        <h3>Scam Activity Trends</h3>
+                        <h3>Scam Propagation Trends</h3>
                         <div style="height: 300px;"><canvas id="scamChart"></canvas></div>
                     </div>
                     <div class="community-highlight glass-card">
-                        <h3>Community Contributions</h3>
-                        <p>Join thousands of users sharing malicious signatures globally.</p>
-                        <button class="btn btn-primary" onclick="switchTab('community')">Browse Community Reports</button>
+                        <h3>Infrastructure Status</h3>
+                        <div class="status-list">
+                            <div class="status-item"><i class="fas fa-circle-check" style="color:var(--accent)"></i> <span>Python AI Cluster</span></div>
+                            <div class="status-item"><i class="fas fa-circle-check" style="color:var(--accent)"></i> <span>Java Logic Core</span></div>
+                            <div class="status-item"><i class="fas fa-circle-check" style="color:var(--accent)"></i> <span>SQLite Persistence</span></div>
+                            <div class="status-item"><i class="fas fa-location-dot" style="color:var(--primary)"></i> <span>Server: Mumbai, IN</span></div>
+                        </div>
+                        <button class="btn btn-primary btn-full" style="margin-top:20px" onclick="switchTab('community')">Access Public Intelligence</button>
                     </div>
                 </div>
             </section>
