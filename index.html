@@ -26,9 +26,11 @@
         <nav class="sidebar-nav">
             <div class="nav-section">MAIN</div>
             <ul>
-                <li class="active" data-tab="dashboard"><i class="fas fa-th-large"></i> <span data-i18n="nav_dashboard">Dashboard</span></li>
-                <li data-tab="report"><i class="fas fa-plus-circle"></i> <span data-i18n="nav_report">Submit Report</span></li>
-                <li data-tab="live-feed"><i class="fas fa-rss"></i> <span data-i18n="nav_feed">Live Threat Feed</span></li>
+                <li class="active" data-tab="home"><i class="fas fa-home"></i> <span data-i18n="nav_home">Home</span></li>
+                <li data-tab="community"><i class="fas fa-users"></i> <span data-i18n="nav_community">Community</span></li>
+                <li data-tab="safety-tricks"><i class="fas fa-lightbulb"></i> <span data-i18n="nav_safety">Safety Tricks</span></li>
+                <li data-tab="upload-report"><i class="fas fa-cloud-upload-alt"></i> <span data-i18n="nav_upload">Upload Report</span></li>
+                <li id="sidebar-login-btn" data-tab="login-tab"><i class="fas fa-sign-in-alt"></i> <span data-i18n="nav_login">Log in</span></li>
             </ul>
 
             <div class="nav-section">GLOBAL TRUSTED PARTNERS</div>
@@ -89,11 +91,11 @@
 
         <div class="content-scroll">
             
-            <!-- Dashboard Tab -->
-            <section id="dashboard" class="tab-content active">
+            <!-- Home Tab -->
+            <section id="home" class="tab-content active">
                 <div class="welcome-header">
-                    <h1>System Overview</h1>
-                    <p>Real-time analytics powered by multi-language cluster.</p>
+                    <h1>ScamGuard Home</h1>
+                    <p>Your portal for real-time protection and community insights.</p>
                 </div>
 
                 <div class="stats-grid-v2">
@@ -135,39 +137,73 @@
                     <div class="community-highlight glass-card">
                         <h3>Community Contributions</h3>
                         <p>Join thousands of users sharing malicious signatures globally.</p>
-                        <button class="btn btn-primary" onclick="switchTab('live-feed')">Browse Public Reports</button>
+                        <button class="btn btn-primary" onclick="switchTab('community')">Browse Community Reports</button>
                     </div>
                 </div>
             </section>
 
-            <!-- Report Tab -->
-            <section id="report" class="tab-content">
+            <!-- Upload Report Tab -->
+            <section id="upload-report" class="tab-content">
                 <div class="form-container">
                     <div class="glass-card">
-                        <h2 data-i18n="report_title">Advanced Report Submission</h2>
+                        <h2 data-i18n="report_title">Upload Fraud Report</h2>
                         <div class="auth-notice">
-                            <i class="fas fa-info-circle"></i> Google Authentication required for public publishing.
+                            <i class="fas fa-info-circle"></i> Secure Google Verification required for all public uploads.
                         </div>
                         <form id="scam-form-v3" style="margin-top:20px">
                             <div class="input-group">
-                                <label>Scam Category</label>
-                                <select><option>Phishing</option><option>Vishing</option><option>Financial Fraud</option></select>
+                                <label>Category</label>
+                                <select><option>Phishing Email</option><option>WhatsApp Scam</option><option>Investment Fraud</option><option>Impersonation</option></select>
                             </div>
                             <div class="input-group">
-                                <label>Report Details</label>
-                                <textarea rows="4" placeholder="Describe the fraud..."></textarea>
+                                <label>Evidence/Details</label>
+                                <textarea rows="4" placeholder="Paste links, numbers, or descriptions here..."></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Report to Public Database</button>
+                            <button type="submit" class="btn btn-primary">Publish to Community</button>
                         </form>
                     </div>
                 </div>
             </section>
 
-            <!-- Live Feed Tab -->
-            <section id="live-feed" class="tab-content">
-                <h2 data-i18n="public_feed_title">Live Community Reports</h2>
+            <!-- Community Tab -->
+            <section id="community" class="tab-content">
+                <h2 data-i18n="public_feed_title">Live Community Intelligence</h2>
                 <div class="reports-stream" id="reports-stream" style="margin-top:20px">
                     <!-- Dynamic Stream -->
+                </div>
+            </section>
+
+            <!-- Safety Tricks Tab -->
+            <section id="safety-tricks" class="tab-content">
+                <h2 style="margin-bottom: 20px;">Safety Tricks & Best Practices</h2>
+                <div class="main-grid">
+                    <div class="glass-card">
+                        <h3><i class="fas fa-lock"></i> Password Hygiene</h3>
+                        <p>Use a unique passphrase for every account. Enable 2FA (Two-Factor Authentication) everywhere possible.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3><i class="fas fa-fish"></i> Spotting Phishing</h3>
+                        <p>Always check the sender's email address. Scammers often use slightly misspelled domains like <code>support@amaz0n.com</code>.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3><i class="fas fa-phone-slash"></i> Vishing Protection</h3>
+                        <p>Banks will never ask for your PIN over the phone. If in doubt, hang up and call the official number on your bank card.</p>
+                    </div>
+                    <div class="glass-card">
+                        <h3><i class="fas fa-link"></i> Link Verification</h3>
+                        <p>Hover over links before clicking to see the actual destination URL in the bottom corner of your browser.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Login Tab (Hidden by default, used for mobile/sidebar access) -->
+            <section id="login-tab" class="tab-content">
+                <div class="form-container">
+                    <div class="glass-card" style="text-align: center; padding: 50px;">
+                        <h2>Account Access</h2>
+                        <p style="margin-bottom: 30px;">Sign in with Google to manage your reports and build your reputation.</p>
+                        <div id="g_id_signin_secondary" style="display: flex; justify-content: center;"></div>
+                    </div>
                 </div>
             </section>
 

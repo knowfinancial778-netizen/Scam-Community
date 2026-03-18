@@ -1,40 +1,46 @@
 const translations = {
     en: {
         search_placeholder: "Search for scam signatures...",
-        welcome_title: "System Overview",
-        welcome_desc: "Real-time analytics powered by Java, Python, and C++ Engine Cluster.",
+        welcome_title: "ScamGuard Pro Home",
+        welcome_desc: "Real-time threat intelligence and community protection hub.",
         stat_total: "Total Reports",
         stat_threats: "Blocked Threats",
-        nav_dashboard: "Dashboard",
-        nav_report: "Submit Report",
-        nav_feed: "Live Threat Feed",
-        report_title: "Advanced Report Submission",
-        public_feed_title: "Live Community Reports"
+        nav_home: "Home",
+        nav_community: "Community",
+        nav_safety: "Safety Tricks",
+        nav_upload: "Upload Report",
+        nav_login: "Log in",
+        report_title: "Upload Fraud Report",
+        public_feed_title: "Community Intelligence"
     },
     hi: {
         search_placeholder: "घोटाले के हस्ताक्षरों की खोज करें...",
-        welcome_title: "प्रणाली अवलोकन",
-        welcome_desc: "जावा, पायथन और सी++ इंजन क्लस्टर द्वारा संचालित रीयल-टाइम एनालिटिक्स।",
+        welcome_title: "स्कैमगार्ड होम",
+        welcome_desc: "रीयल-टाइम थ्रेट इंटेलिजेंस और कम्युनिटी प्रोटेक्शन हब।",
         stat_total: "कुल रिपोर्ट",
         stat_threats: "अवरुद्ध खतरे",
-        nav_dashboard: "डैशबोर्ड",
-        nav_report: "रिपोर्ट सबमिट करें",
-        nav_feed: "लाइव थ्रेट फीड",
-        report_title: "उन्नत रिपोर्ट सबमिशन",
-        public_feed_title: "लाइव कम्युनिटी रिपोर्ट्स"
+        nav_home: "होम",
+        nav_community: "समुदाय",
+        nav_safety: "सुरक्षा ट्रिक्स",
+        nav_upload: "रिपोर्ट अपलोड करें",
+        nav_login: "लॉगिन करें",
+        report_title: "धोखाधड़ी रिपोर्ट अपलोड करें",
+        public_feed_title: "सामुदायिक खुफिया"
     },
     mr: {
         search_placeholder: "फसवणुकीच्या स्वाक्षऱ्या शोधा...",
-        welcome_title: "प्रणाली विहंगावलोकन",
-        welcome_desc: "जावा, पायथन आणि सी++ इंजिन क्लस्टरद्वारे समर्थित रिअल-टाइम विश्लेषण.",
+        welcome_title: "स्कॅमगार्ड होम",
+        welcome_desc: "रिअल-टाइम थ्रेट इंटेलिजन्स आणि समुदाय संरक्षण केंद्र.",
         stat_total: "एकूण अहवाल",
         stat_threats: "अवरोधित धोके",
-        nav_dashboard: "डॅशबोर्ड",
-        nav_report: "अहवाल सबमिट करा",
-        nav_feed: "लाइव्ह थ्रेट फीड",
-        report_title: "प्रगत अहवाल सबमिशन",
-        public_feed_title: "थेट समुदाय अहवाल"
-    }
+        nav_home: "होम",
+        nav_community: "समुदाय",
+        nav_safety: "सुरक्षा ट्रिक्स",
+        nav_upload: "अहवाल अपलोड करा",
+        nav_login: "लॉग इन करा",
+        report_title: "फसवणूक अहवाल अपलोड करा",
+        public_feed_title: "समुदाय बुद्धिमत्ता"
+    },
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -43,9 +49,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const sidebarLinks = document.querySelectorAll('.sidebar-nav li');
     const langSelect = document.getElementById('lang-select');
     let mainChart = null;
-    const API_URL = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' 
-                    ? 'http://127.0.0.1:5000' 
-                    : 'https://scam-guard-api.onrender.com'; // Change this after deploying to Render
+    const API_URL = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
+        ? 'http://127.0.0.1:5000'
+        : 'https://scam-community.onrender.com'; // Change this after deploying to Render
 
     // Multi-Language Logic
     function updateLanguage(lang) {
@@ -56,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 else el.textContent = translations[lang][key];
             }
         });
-        
+
         // Manual updates for elements without simple data-i18n
         document.querySelector('.welcome-header h1').textContent = translations[lang].welcome_title;
         document.querySelector('.welcome-header p').textContent = translations[lang].welcome_desc;
@@ -66,11 +72,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Google Auth Logic
     window.handleCredentialResponse = (response) => {
-        console.log("Encoded JWT ID token: " + response.credential);
         const user = decodeJwt(response.credential);
-        alert(`Welcome ${user.name}! You are now authorized to publish reports.`);
+        alert(`Welcome ${user.name}! You are now authorized to upload reports.`);
+        
+        // Update user UI
         document.querySelector('.user-name').textContent = user.name;
-        document.querySelector('.user-status').textContent = "Verified Provider";
+        document.querySelector('.user-status').textContent = "Verified Member";
+        
+        // Hide Login sidebar button
+        const loginBtn = document.getElementById('sidebar-login-btn');
+        if (loginBtn) loginBtn.style.display = 'none';
+        
+        // Switch to home after login
+        switchTab('home');
     };
 
     function decodeJwt(token) {
@@ -122,9 +136,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Close sidebar when clicking outside on mobile
     document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 1024 && 
-            !sidebar.contains(e.target) && 
-            !mobileMenuBtn.contains(e.target) && 
+        if (window.innerWidth <= 1024 &&
+            !sidebar.contains(e.target) &&
+            !mobileMenuBtn.contains(e.target) &&
             sidebar.classList.contains('open')) {
             sidebar.classList.remove('open');
         }
@@ -138,6 +152,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             content.classList.remove('active');
             if (content.id === tabId) content.classList.add('active');
         });
+
+        // Initialize secondary login if switching to login tab
+        if (tabId === 'login-tab') {
+            google.accounts.id.renderButton(
+                document.getElementById("g_id_signin_secondary"),
+                { theme: "outline", size: "large", width: "250" }
+            );
+        }
     }
 
     function renderFeed() {
@@ -168,9 +190,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             e.preventDefault();
             const details = reportForm.querySelector('textarea').value;
             const category = reportForm.querySelector('select').value;
-            
+
             if (!details) return alert("Please provide report details.");
-            
+
             const newReport = {
                 id: Date.now(),
                 title: category + " Alert",
@@ -197,7 +219,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }).then(() => {
                 dbData.scams.unshift(newReport);
                 dbData.stats.total_reports = (parseInt(dbData.stats.total_reports || 0) + 1).toString();
-                
+
                 if (mainChart) {
                     mainChart.data.datasets[0].data[2]++;
                     mainChart.update();
@@ -206,15 +228,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 renderFeed();
                 renderDashboard();
                 reportForm.reset();
-                alert("Report synced with Database Cluster!");
-                switchTab('live-feed');
+                alert("Report successfully uploaded to Cloud Intelligence!");
+                switchTab('community');
             }).catch(err => {
                 console.error("Database sync failed:", err);
-                alert("Database offline. Running in local session mode.");
+                alert("Network latency detected. Saved locally.");
                 dbData.scams.unshift(newReport);
                 renderFeed();
                 reportForm.reset();
-                switchTab('live-feed');
+                switchTab('community');
             });
         });
     }
@@ -222,7 +244,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function renderDashboard() {
         document.getElementById('stat-total').textContent = dbData.stats.total_reports || 0;
         document.getElementById('stat-threats').textContent = dbData.stats.blocked_threats || 0;
-        
+
         const stats = document.querySelectorAll('.stat-card .value');
         if (stats.length >= 4) {
             stats[2].textContent = dbData.stats.verified_partners || 0;
